@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Museum of Ancient Internet Artifacts</title>
+<style>
+    :root{
+        --bg:#0b1020; --card:#0f1724; --accent:#7afcff; --muted:#9aa4b2;
+        --glass: rgba(255,255,255,0.03);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+        margin:0; font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background:linear-gradient(180deg,#071025 0%, #071827 50%, #031018 100%);
+        color:#e6eef6; -webkit-font-smoothing:antialiased;
+        padding:28px;
+    }
+    header{display:flex;align-items:center;gap:18px;margin-bottom:20px}
+    .logo{
+        width:64px;height:64px;border-radius:8px;background:linear-gradient(135deg,#2b2bff 0,#7afcff 100%);display:flex;
+        align-items:center;justify-content:center;font-weight:700;color:#021;box-shadow:0 6px 18px rgba(0,0,0,0.5);
+        font-family:monospace;font-size:18px;
+    }
+    h1{margin:0;font-size:20px}
+    p.lead{margin:2px 0 0;color:var(--muted);font-size:13px}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:18px}
+    .card{
+        background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+        border:1px solid rgba(255,255,255,0.04); padding:12px; border-radius:10px;
+        display:flex; gap:12px; align-items:flex-start;
+    }
+    .icon{
+        min-width:68px; height:68px; border-radius:8px; display:flex;align-items:center;justify-content:center;
+        background:var(--glass); color:var(--accent); font-weight:700; font-family:monospace; font-size:12px;
+        box-shadow:inset 0 -8px 26px rgba(0,0,0,0.35);
+    }
+    .meta{flex:1}
+    .meta h3{margin:0 0 6px;font-size:15px}
+    .meta p{margin:0;color:var(--muted); font-size:13px; line-height:1.3}
+    .tag{display:inline-block;margin-top:8px;padding:6px 8px;border-radius:999px;background:rgba(122,252,255,0.06);color:var(--accent);font-size:12px}
+    .actions{display:flex;gap:8px;margin-left:8px;align-items:center}
+    button{
+        background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--accent);padding:6px 10px;border-radius:8px;font-size:13px;
+        cursor:pointer;
+    }
+    .caption{font-family:monospace;color:#bcd; font-size:12px;margin-top:6px;opacity:0.9}
+    footer{margin-top:18px;color:var(--muted);font-size:13px}
+    /* tiny retro flair */
+    .retro{font-family:monospace;letter-spacing:0.6px;color:#cdfdfd}
+    @media (max-width:480px){body{padding:14px}}
+</style>
+</head>
+<body>
+<header>
+    <div class="logo">WWW</div>
+    <div>
+        <h1>Museum of Ancient Internet Artifacts</h1>
+        <p class="lead">A tiny, slightly dusty hall preserving relics of dial‑up days — each with a cheeky plaque.</p>
+    </div>
+</header>
+
+<main>
+    <section class="gallery">
+        <article class="card">
+            <div class="icon">56k</div>
+            <div class="meta">
+                <h3>Dial‑Up Modem</h3>
+                <p>Plays the original handshake screech — effectively the internet's opera. If you pressed the phone, the web hung up.</p>
+                <div class="caption tag">ca. 1996 · Patience required</div>
+            </div>
+            <div class="actions">
+                <button onclick="beep(6,120,0.04)">Listen</button>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="icon">GIF</div>
+            <div class="meta">
+                <h3>Blinking "Under Construction" GIF</h3>
+                <p>The neon shrine of unfinished websites. Function: inform visitors the site will be perfect... eventually.</p>
+                <div class="caption tag">ca. 1997 · Animated forever</div>
+            </div>
+            <div class="actions">
+                <button onclick="flashCard(this)">Wink</button>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="icon">Geo</div>
+            <div class="meta">
+                <h3>GeoCities Homepage</h3>
+                <p>Personal jungle of animated gifs, guestbooks, and too many fonts. Archaeologists still dig through the Clip Art layer.</p>
+                <div class="caption tag">1994–2009 · Self‑expression overload</div>
+            </div>
+            <div class="actions">
+                <button onclick="openMock('GeoCities')">Visit (mock)</button>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="icon">NS</div>
+            <div class="meta">
+                <h3>Netscape Navigator</h3>
+                <p>The browser that waved and said "You're connected!" before browsers had opinions about privacy or plugins.</p>
+                <div class="caption tag">1994 · Iconic toolbar</div>
+            </div>
+            <div class="actions">
+                <button onclick="openMock('Netscape')">Launch</button>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="icon">FLASH</div>
+            <div class="meta">
+                <h3>Flash Animation</h3>
+                <p>Home of awkwardly looped mascots and "skip intro" buttons; required patience and the right plugin prayer.</p>
+                <div class="caption tag">2000s · Play at your own risk</div>
+            </div>
+            <div class="actions">
+                <button onclick="openMock('Flash')">Play (nostalgia)</button>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="icon">Top8</div>
+            <div class="meta">
+                <h3>MySpace Top 8</h3>
+                <p>Social hierarchy displayed like a trophy case. Pick the wrong order and friendships subtly recalibrated.</p>
+                <div class="caption tag">2004 · Drama magnet</div>
+            </div>
+            <div class="actions">
+                <button onclick="openMock('Top8')">Audit</button>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="icon">404</div>
+            <div class="meta">
+                <h3>404 — Page Not Found</h3>
+                <p>An existential plaque: the web's polite way of saying "I don't know what you're looking for, but I tried."</p>
+                <div class="caption tag">Everlasting · Mildly passive‑aggressive</div>
+            </div>
+            <div class="actions">
+                <button onclick="alert('404 — Artifact not found. Try a different gallery.')">Ping</button>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="icon">IRC</div>
+            <div class="meta">
+                <h3>IRC Channel</h3>
+                <p>Real‑time text rooms where arguments were both immediate and remembered forever by logs no one asked for.</p>
+                <div class="caption tag">1990s · #nostalgia</div>
+            </div>
+            <div class="actions">
+                <button onclick="openMock('IRC')">Join</button>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="icon">Applet</div>
+            <div class="meta">
+                <h3>Java Applet</h3>
+                <p>Mini programs that promised interactivity and delivered security warnings with dramatic flair.</p>
+                <div class="caption tag">2000s · Click only if brave</div>
+            </div>
+            <div class="actions">
+                <button onclick="openMock('Applet')">Run</button>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="icon">MP3</div>
+            <div class="meta">
+                <h3>Peer‑to‑Peer Share</h3>
+                <p>Folder full of vaguely named music files and a deep moral education in bandwidth limits.</p>
+                <div class="caption tag">2000s · Loud earbuds</div>
+            </div>
+            <div class="actions">
+                <button onclick="openMock('P2P')">Explore</button>
+            </div>
+        </article>
+    </section>
+
+    <footer>
+        <div class="retro">All exhibits are preserved for humor and study. No plugins were harmed in the making of this museum.</div>
+    </footer>
+</main>
+
+<script>
+    // tiny audio emulator for "dial-up" beeps
+    function beep(count, freq, dur){
+        try{
+            const ac = new (window.AudioContext||window.webkitAudioContext)();
+            let when = ac.currentTime;
+            for(let i=0;i<count;i++){
+                let o = ac.createOscillator();
+                let g = ac.createGain();
+                o.type = 'sawtooth';
+                o.frequency.value = freq + i*40;
+                g.gain.value = dur;
+                o.connect(g); g.connect(ac.destination);
+                o.start(when + i*0.12); o.stop(when + i*0.12 + 0.08);
+            }
+        }catch(e){ alert('Audio not supported'); }
+    }
+
+    // playful flash effect
+    function flashCard(btn){
+        const card = btn.closest('.card');
+        card.style.transition='box-shadow 0.2s, transform 0.2s';
+        card.style.transform='translateY(-6px)';
+        card.style.boxShadow='0 10px 30px rgba(122,252,255,0.06)';
+        setTimeout(()=>{card.style.transform=''; card.style.boxShadow='';},300);
+    }
+
+    // lightweight mocks to simulate launching extinct tech
+    function openMock(name){
+        const msgs = {
+            'GeoCities':'You have entered a homepage template warzone. Guestbook enabled.',
+            'Netscape':'Welcome — your browser toolbar feels very important.',
+            'Flash':'A Flash intro plays. Please wait while your patience loads.',
+            'Top8':'Top 8 recalculated. Friend anxiety increased by 77%.',
+            'IRC':'You joined #lobby. Topic: "lag".',
+            'Applet':'Security popup: Do you trust this unsigned JAR? ... probably not.',
+            'P2P':'Searching for "best hits (320kbps).mp3"... 0 results, 12 warnings.'
+        };
+        alert(msgs[name] || (name+' opened.'));
+    }
+</script>
+</body>
+</html>
